@@ -8,7 +8,7 @@ const staticRoute = require('./routes/staticRouter')
 const app = express();
 const PORT = 8002;
 
-connectMongoDb("mongodb://localhost:27017/todoApp")
+connectMongoDb("mongodb+srv://todoapp:todoapp@cluster0.vfkzrv8.mongodb.net/todoApp")
 .then(console.log("MongoDb Connected"))
 
 app.set("view engine", "ejs");
