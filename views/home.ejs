@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>TODO APP</title>
+</head>
+<body>
+    <h1>TODO APP</h1>
+
+    <div>
+        <% if (locals.descValidation) { %>
+            <h4>Please enter description</h4>
+        <% } %>
+    </div>
+    
+    <div>
+        <form method="post" action="/todo">
+            <input type="text" name="description" placeholder="Enter TODO Task">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+    <div>
+        <% if (locals.todoList && locals.todoList.length > 0) { %>
+            <table>
+                <thead>
+                    <th>Sr No</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>
+                    <% todoList.forEach((todo, index) => {%>
+                        <tr>
+                            <td><%= index+1 %></td>
+                            <td>
+                                <form method="POST" action="/todo/<%= todo._id %>?_method=PUT">
+                                    <input type="text" name="description" value="<%=todo.description %>">
+                                    <button type="submit">Edit</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="POST" action="/todo/<%= todo._id %>?_method=DELETE">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <%})%>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+</body>
+</html>
