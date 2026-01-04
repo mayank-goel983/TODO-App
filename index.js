@@ -9,6 +9,7 @@ const app = express();
 const PORT = 8002;
 
 connectMongoDb("mongodb+srv://todoapp:todoapp@cluster0.vfkzrv8.mongodb.net/todoApp")
+//connectMongoDb("mongodb://localhost:27017/todoApp")
 .then(console.log("MongoDb Connected"))
 
 app.set("view engine", "ejs");

@@ -21,11 +21,7 @@ async function handleInsertToDo(req, res)
        createdAt: Date.now()
     });
 
-    const allToDOList = await TODO.find({});
-
-    return res.render('home',{
-        todoList: allToDOList
-    });
+    return res.redirect('/');
 }
 
 async function handleUpdateToDo(req, res)
@@ -36,11 +32,7 @@ async function handleUpdateToDo(req, res)
 
     const result = await TODO.findByIdAndUpdate(req.params.id, {description: body.description});
     
-    const allToDOList = await TODO.find({});
-
-    return res.render('home',{
-        todoList: allToDOList
-    });
+    return res.redirect('/');
 }
 
 async function handleDeleteToDo(req, res)
@@ -49,9 +41,7 @@ async function handleDeleteToDo(req, res)
     
     const allToDOList = await TODO.find({});
 
-    return res.render('home',{
-        todoList: allToDOList
-    });
+    return res.redirect('/');
 }
 
 module.exports = {
